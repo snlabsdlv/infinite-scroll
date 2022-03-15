@@ -1,0 +1,50 @@
+<div class="container-fluid mb-4 mt-4">
+  <div class="row">
+    <div class="col-4">
+      <a class="orange" routerLink="/"> < Back to list</a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mb-4 mt-4" *ngIf="(airlineDetails | json) != '{}'">
+  <div class="row">
+    <div class="col-8">
+      <p>{{ airlineDetails.name }}</p>
+      <p *ngIf="airlineDetails.phone">
+        {{ airlineDetails.phone }}
+      </p>
+      <a class="orange" target="_blank" [href]="airlineDetails.site">{{
+        removeUrlPrefix(airlineDetails.site)
+      }}</a>
+    </div>
+    <div class="col-4">
+      <img
+        class="airlineThumb"
+        src="{{ cdnUrlPath + airlineDetails.logoURL }}"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mb-4 mt-4">
+  <div class="row">
+    <div class="col-12">
+      <a class="orange" target="_blank" [href]="airlineDetails.site"
+        >Check flight status</a
+      >
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-8">
+      <input
+        type="text"
+        class="form-control"
+        id="searchField"
+        placeholder="Enter Flight number..."
+      />
+    </div>
+    <div class="col-4">
+      <button class="btn btn-orange">Check</button>
+    </div>
+  </div>
+</div>
