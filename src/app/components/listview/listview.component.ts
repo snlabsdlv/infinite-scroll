@@ -9,7 +9,7 @@ import { StoreDataService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-listview',
   templateUrl: './listview.component.html',
-  styleUrls: ['./listview.component.scss'],
+  styleUrls: ['./listview.component.scss']
 })
 /*
 https://www.kayak.com/h/mobileapis/directory/airlines/homework
@@ -27,21 +27,19 @@ export class ListviewComponent implements OnInit {
   ) {
     this.storeService.dataService$.subscribe({
       next: (data: Airline[]) => {
-        console.log('initDataSource data  ', data);
+        // console.log('data', data);
         this.listViewData = [...data];
         this.storeViewData = [...data];
       },
       error: (err: any) => {
         console.log('Error err ', err);
-      },
+      }
     });
   }
 
   ngOnInit(): void {}
 
   selectedItem(item: Airline) {
-    console.log('ListviewComponent::: CALLED ');
-
     this.shareService.setRowDetails(item);
     this.router.navigate(['detail/', item.name]);
   }
@@ -57,7 +55,6 @@ export class ListviewComponent implements OnInit {
   }
 
   onSearchFilter(searchString: string) {
-    // console.log('searchString', searchString);
     if (searchString.length > 0) {
       this.listViewData = [...this.listViewData].filter((item: Airline) => {
         return item.name?.toLowerCase().includes(searchString.toLowerCase());

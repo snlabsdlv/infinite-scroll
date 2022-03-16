@@ -1,7 +1,13 @@
 <ng-container *ngIf="listDataItems.length; else loaderTemplate">
   <li class="list-cell" *ngFor="let item of listDataItems">
     <a routerLink="." (click)="onItemSelected(item)">
-      <img class="airlineLogo" src="{{ cdnUrlPath + item.logoURL }}" />
+      <img
+        (error)="imgLogo.src = placeholderImg"
+        class="airlineLogo"
+        src="{{ cdnUrlPath + item.logoURL }}"
+        #imgLogo
+      />
+
       <span class="airlineName"> {{ item.name }}</span>
     </a>
   </li>

@@ -5,13 +5,14 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-listview-row',
   templateUrl: './listview-row.component.html',
-  styleUrls: ['./listview-row.component.scss'],
+  styleUrls: ['./listview-row.component.scss']
 })
 export class ListviewRowComponent implements OnInit {
   @Input() listDataItems!: Airline[];
   @Output() itemSelectedEmitter = new EventEmitter<Airline>();
 
   cdnUrlPath = environment.CDN_IMG_URL;
+  placeholderImg = 'https://via.placeholder.com/90/fff/808080';
   dummyPlaceHolders: number[] = [];
   dummyCount = 500;
 
@@ -19,6 +20,10 @@ export class ListviewRowComponent implements OnInit {
 
   ngOnInit(): void {
     this.dummyPlaceHolders = [...this.createDummyElements(this.dummyCount)];
+  }
+  imageNotFound(item: Airline) {
+    console.log('imageNotFound(item) ', item.name);
+    return this.placeholderImg;
   }
 
   onItemSelected(item: Airline) {

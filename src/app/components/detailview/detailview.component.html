@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="container-fluid mb-4 mt-4" *ngIf="(airlineDetails | json) != '{}'">
+<div class="container-fluid mb-4 mt-4" *ngIf="(airlineDetails | json) !== '{}'">
   <div class="row">
     <div class="col-8">
       <p>{{ airlineDetails.name }}</p>
@@ -29,22 +29,47 @@
 <div class="container-fluid mb-4 mt-4">
   <div class="row">
     <div class="col-12">
-      <a class="orange" target="_blank" [href]="airlineDetails.site"
+      <a class="orange" target="_blank" [href]="this.kayakTrackerURL"
         >Check flight status</a
       >
     </div>
   </div>
-  <div class="row mt-2">
-    <div class="col-8">
-      <input
-        type="text"
-        class="form-control"
-        id="searchField"
-        placeholder="Enter Flight number..."
-      />
+  <form [formGroup]="searchForm" novalidate>
+    <div class="row mt-2">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="searchField"
+          placeholder="Enter Flight number..."
+          formControlName="searchFlight"
+          required
+        />
+      </div>
+      <div class="col-4">
+        <button
+          [disabled]="searchForm.invalid"
+          class="btn btn-orange"
+          (click)="openKayakUrl()"
+        >
+          Check
+        </button>
+      </div>
+      <div class="row mt-2">
+        <div class="col-8">
+          <div
+            *ngIf="searchFlight.invalid && searchFlight.touched"
+            class="alert alert-danger"
+          >
+            <p *ngIf="searchFlight.errors?.['required']">
+              Flight Number is required.
+            </p>
+            <p *ngIf="searchFlight.errors?.['minlength']">
+              Flight Number must be at least 4 characters
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-4">
-      <button class="btn btn-orange">Check</button>
-    </div>
-  </div>
+  </form>
 </div>

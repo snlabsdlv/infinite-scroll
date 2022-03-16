@@ -8,17 +8,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ShareDataService } from 'src/app/services/share.service';
 
 @NgModule({
-  declarations: [
-    ListviewComponent,
-    ListviewRowComponent,
-
-  ],
-  imports: [
-    CommonModule,
-    ListviewRoutingModule,
-    NgxSkeletonLoaderModule
-  ],
-  providers: [],
+  declarations: [ListviewComponent, ListviewRowComponent],
+  imports: [CommonModule, ListviewRoutingModule, NgxSkeletonLoaderModule],
+  providers: []
 })
-export class ListviewModule { }
-
+export class ListviewModule {}

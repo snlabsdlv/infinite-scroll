@@ -4,7 +4,7 @@ import { Airline } from 'src/app/interfaces/airline.model';
 import { JsonService } from './json.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class StoreDataService {
   mainDataSource: BehaviorSubject<Airline[]> = new BehaviorSubject<Airline[]>(
@@ -12,7 +12,6 @@ export class StoreDataService {
   );
 
   dataService$: Observable<any> = this.mainDataSource.asObservable();
-
   constructor(private jsonService: JsonService) {
     this.initDataSource();
   }
@@ -20,12 +19,11 @@ export class StoreDataService {
   initDataSource(): void {
     this.jsonService.getData().subscribe({
       next: (data: Airline[]) => {
-        console.log('initDataSource data  ', data);
         this.mainDataSource.next(data);
       },
       error: (err: any) => {
         console.log('Error err ', err);
-      },
+      }
     });
   }
 }

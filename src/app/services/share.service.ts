@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Airline } from 'src/app/interfaces/airline.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ShareDataService {
   rowDetailsSource: BehaviorSubject<Airline> = new BehaviorSubject<Airline>(

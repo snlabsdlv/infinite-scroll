@@ -11,10 +11,7 @@ import { ListviewModule } from './components/listview/listview.module';
 import { DetailviewModule } from './components/detailview/detailview.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,11 +20,9 @@ import { DetailviewModule } from './components/detailview/detailview.module';
     HttpClientJsonpModule,
     LayoutModule,
     ListviewModule,
-    DetailviewModule,
-
-
+    DetailviewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
